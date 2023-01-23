@@ -38,7 +38,7 @@ const StyledLink = styled(Link)`
 
 export default function Home() {
     return <Box>
-        <p>Welcome to the <span>Phonebook</span> web-site!</p>
+        <p>Welcome to the <span>Phonebook</span> web-site</p>
         <p>Here you can create your own phonebook very simple - just <StyledLink to='/register'>sign-up</StyledLink> or <StyledLink to="/login">login</StyledLink> to manage your contacts. Enjoy :)</p>
     </Box>
 }

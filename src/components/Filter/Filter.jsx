@@ -22,6 +22,6 @@ export function Filter() {
     const dispatch = useDispatch();
     return <div style={{margin: '0 auto'}}>
         <SearchText>Find contacts by name:</SearchText>
-        <FilterInput placeholder="Type to filter" type="text" onChange={e => dispatch(setFilter(e.currentTarget.value))} id={nanoid()} />
+        <FilterInput placeholder="Type here to search" type="text" onChange={e => dispatch(setFilter(e.currentTarget.value))} id={nanoid()} />
     </div>
 }

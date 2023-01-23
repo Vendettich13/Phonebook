@@ -51,6 +51,7 @@ export function RegisterForm() {
         id="component-outlined"
         label="Password"
         name='password'
+        title="Password shoud contain at least 7 symbols"
         />
         </FormControl>
       <Button style={{height: '40px', color: "#2dcf2d", border: '1px solid #2dcf2d'}} variant="outlined" type="submit">Register</Button>

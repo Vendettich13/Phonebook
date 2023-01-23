@@ -10,14 +10,14 @@ import { Helmet } from 'react-helmet';
 import styled from '@emotion/styled';
 
 const ContactWrapper = styled.div`
-margin: 0 auto;
-display: flex;
-align-items: center;
-width: 600px;
-flex-direction: column;
-background-color: #eeffee;
-padding: 20px 10px;
-border-radius: 10px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  width: 600px;
+  flex-direction: column;
+  background-color: #eeffee;
+  padding: 20px 10px;
+  border-radius: 10px;
 `
 const EmptyWarn = styled.p`
   color: #2dcf2d;

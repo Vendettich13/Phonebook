@@ -23,7 +23,7 @@ export function App() {
 
   return isRefreshing
     ? <DotLoader
-      color="#fd7cf6"
+      color="#2dcf2d"
       cssOverride={{
         display: 'block',
         margin: '0 auto',

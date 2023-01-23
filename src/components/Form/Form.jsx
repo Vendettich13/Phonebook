@@ -4,6 +4,9 @@ import { addContact } from "redux/operations";
 import { selectContacts } from "redux/selectors";
 import Notiflix from "notiflix";
 import css from "../Form/Form.module.css"
+import { Button } from "@mui/material";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 
 export function Form() {
@@ -46,28 +49,22 @@ export function Form() {
     setNumber('');
     }
       
-        return <form onSubmit={handleSubmit} className={css.form}>
-        <label>
-        <p>Name</p> <input
-        value={name}
-        onChange={handleChange}
-        type="text"
-        name="name"
+        return <Box style={{gap: "20px", display: 'flex', flexDirection: 'column'}} component='form' sx={{
+        '& > :not(style)': { width: 500,
+        maxWidth: '100%', borderColor: '#2dcf2d', },
+      }}
+      noValidate
+        autoComplete="off" onSubmit={handleSubmit} className={css.form}>
+        <TextField value={name} id="outlined-basic" label="Name" variant="outlined" onChange={handleChange}
+        type="text" name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required/> 
-        </label>
-        <label>
-                <p>Number</p> <input
-        value={number}
-        onChange={handleChange}
-        type="tel"
-        name="number"
-        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        required />
+        <TextField value={number} id="outlined-basic" label="Phone" variant="outlined" name="number" onChange={handleChange}
+        type="tel" pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required/>
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+        <Button variant="outlined" type="button">Add contact</Button>
+      </Box>
     
 }

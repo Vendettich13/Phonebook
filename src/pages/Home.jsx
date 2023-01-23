@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 
 const Box = styled.div`
     display: flex;
+    width: 70vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;

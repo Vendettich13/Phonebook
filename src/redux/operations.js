@@ -21,7 +21,7 @@ export const addContact = createAsyncThunk(
   async ({ name, number }, thunkAPI) => {
     try {
       const response = await axios.post('/contacts', { name, number });
-      Notiflix.Notify.success('Contact was added', { timeout: 1500 });
+      Notiflix.Notify.success('Contact has been added', { timeout: 1500 });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -34,7 +34,7 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       const response = await axios.delete(`/contacts/${contactId}`);
-      Notiflix.Notify.success('Contact was removed', { timeout: 1500 });
+      Notiflix.Notify.success('Contact has been removed', { timeout: 1500 });
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

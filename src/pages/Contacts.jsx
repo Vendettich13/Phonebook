@@ -19,6 +19,12 @@ background-color: #eeffee;
 padding: 20px 10px;
 border-radius: 10px;
 `
+const EmptyWarn = styled.p`
+  color: #2dcf2d;
+  margin-top: 15px;
+  font-weight: 500;
+  font-size: 20px;
+`
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -32,9 +38,9 @@ export default function Contacts() {
   return (
   <ContactWrapper>
   {error && <p style={{ fontSize: "25px", fontWeight: "600" }}>Something went wrong, please reload the page :(</p>}
-  {!error && <p style={{fontSize: "35px", fontWeight: "700", color: "#2dcf2d"}}>Phonebook</p>}
+  {!error && <p style={{fontSize: "35px", fontWeight: "700", color: "#2dcf2d", marginBottom: '20px'}}>Phonebook</p>}
   {!error && <Form />}
-  {!error && <p style={{ fontSize: "35px", fontWeight: "700", color: "#2dcf2d" }}>Contacts</p>}
+  {!error && <p style={{ fontSize: "35px", fontWeight: "700", color: "#2dcf2d", marginTop: '20px' }}>Contacts</p>}
   <Helmet>
         <title>Your Contacts</title>
   </Helmet>
@@ -48,7 +54,7 @@ export default function Contacts() {
   }
   {contacts.length !== 0 && <Filter/>}
   {contacts.length !== 0 && <ContactList />}
-  {contacts.length === 0 && !error && <p style={{ marginTop: '15px', fontWeight: '500', fontSize: '20px' }}>Your contact list is empty</p>}
+  {contacts.length === 0 && !error && <EmptyWarn>Your contact list is empty...</EmptyWarn>}
 </ContactWrapper>
   );
 };

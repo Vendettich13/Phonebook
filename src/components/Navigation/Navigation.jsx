@@ -17,8 +17,8 @@ export const Link = styled(NavLink)`
     &::after {
         content: '';
         position: absolute;
-        bottom: -1px;
-        height: 4px;
+        bottom: 1px;
+        height: 3px;
         width: 100%;
         left: 0;
         background-color: #2dcf2d;

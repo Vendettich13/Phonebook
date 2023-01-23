@@ -1,7 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import FormControl from '@mui/material/FormControl';
+import Input from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
 
 export function RegisterForm() {
@@ -21,16 +23,37 @@ export function RegisterForm() {
   };
 
   return (
-      <Box component='form' sx={{
+      <Box component='form' style={{display: 'flex', flexDirection: 'column', gap: '20px'}} sx={{
         '& > :not(style)': { width: 500,
-        maxWidth: '100%', borderColor: '#2dcf2d', },
+        maxWidth: '100%' },
       }}
       noValidate
       autoComplete="off" onSubmit={handleSubmit}>
-      <TextField style={{margin: '20px 0px 10px'}} id="outlined-basic" label="Username" variant="outlined" name='name'/>
-      <TextField style={{margin: '10px 0px'}} id="outlined-basic" label="Email" variant="outlined" name='email'/>
-      <TextField style={{margin: '10px 0px 20px'}} id="outlined-basic" label="Password" variant="outlined" name='password'/>
-      <Button style={{height: '40px', color: "#2dcf2d"}} variant="outlined" type="submit">Register</Button>
+      <FormControl style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
+        <Input htmlFor="component-outlined">Name</Input>
+        <OutlinedInput
+        id="component-outlined"
+        label="Username"
+        name='name'
+        />
+        </FormControl>
+        <FormControl style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
+        <Input htmlFor="component-outlined">Email</Input>
+        <OutlinedInput
+        id="component-outlined"
+        label="Email"
+        name='email'
+        />
+        </FormControl>
+          <FormControl style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
+        <Input htmlFor="component-outlined">Password</Input>
+        <OutlinedInput
+        id="component-outlined"
+        label="Password"
+        name='password'
+        />
+        </FormControl>
+      <Button style={{height: '40px', color: "#2dcf2d", border: '1px solid #2dcf2d'}} variant="outlined" type="submit">Register</Button>
     </Box>
   );
 };

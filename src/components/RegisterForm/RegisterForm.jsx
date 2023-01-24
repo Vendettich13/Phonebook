@@ -27,7 +27,6 @@ export function RegisterForm() {
         '& > :not(style)': { width: 500,
         maxWidth: '100%' },
       }}
-      noValidate
       autoComplete="off" onSubmit={handleSubmit}>
       <FormControl style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
         <Input htmlFor="component-outlined">Name</Input>

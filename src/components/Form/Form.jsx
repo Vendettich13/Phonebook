@@ -71,7 +71,7 @@ export function Form() {
         autoComplete="off" onSubmit={handleSubmit}>
         <FormControl  style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
         <Input htmlFor="component-outlined">Name</Input>
-        <OutlinedInput inputProps={{ inputMode: 'text', pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$" }}
+        <OutlinedInput placeholder="Adam" inputProps={{ inputMode: 'text', pattern: "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$" }}
         value={name}
         type='text'
         id="component-outlined"
@@ -84,7 +84,7 @@ export function Form() {
         </FormControl>
         <FormControl style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
         <Input htmlFor="component-outlined">Phone</Input>
-        <OutlinedInput inputProps={{ inputMode: 'numeric', pattern: "[0-9]{3}-[0-9]{3}-[0-9]{3}" }}
+        <OutlinedInput placeholder="111-111-111" inputProps={{ inputMode: 'numeric', pattern: "[0-9]{3}-[0-9]{3}-[0-9]{3}" }}
         id="component-outlined"
         type="text"
         value={number}

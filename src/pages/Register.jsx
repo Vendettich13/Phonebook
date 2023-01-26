@@ -5,6 +5,9 @@ import styled from '@emotion/styled';
 export const FormWrapper = styled.div`
     max-width: 500px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 `
 
 export default function Register() {

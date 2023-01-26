@@ -1,49 +1,66 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import Box from '@mui/material/Box';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/material/InputLabel';
-import Button from '@mui/material/Button';
+import Notiflix from 'notiflix';
+import { useFormik } from 'formik';
+import { validationLogInSchema } from 'constants/validationConstants';
+import { AuthForm, AuthField, AuthButton } from 'components/RegisterForm/RegisterForm';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  function handleSubmit(values, { resetForm }) {
     dispatch(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email: values.email,
+        password: values.password,
       })
-    );
-    form.reset();
+    )
+     .unwrap()
+      .then(() => Notiflix.Notify.success('You have successfully logged in'))
+      .catch(() =>
+        Notiflix.Notify.failure(
+          'Something went wrong. Reload the page or check entered data...'
+        )
+      );
+    resetForm();
   };
 
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    validationSchema: validationLogInSchema,
+    onSubmit: handleSubmit,
+  })
+
   return (
-    <Box component='form' style={{display: 'flex', flexDirection: 'column', gap: '20px'}} sx={{
-        '& > :not(style)': { width: 500,
-        maxWidth: '100%' },
-      }}
-      autoComplete="off" onSubmit={handleSubmit}>
-      <FormControl style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
-        <Input htmlFor="component-outlined">Email</Input>
-        <OutlinedInput
-        id="component-outlined"
+    <AuthForm onSubmit={formik.handleSubmit}>
+      <AuthField
+        required
+        autoComplete='off'
+        fullWidth
+        id="email"
+        name="email"
         label="Email"
-        name='email'
-        />
-        </FormControl>
-      <FormControl style={{borderBottom: '3px solid #2dcf2d', borderRadius: '5px'}}>
-        <Input htmlFor="component-outlined">Password</Input>
-        <OutlinedInput
-        id="component-outlined"
+        placeholder='jacob12345@mail.com'
+        value={formik.values.email}
+        onChange={formik.handleChange}
+        error={formik.touched.email && Boolean(formik.errors.email)}
+        helperText={formik.touched.email && formik.errors.email}/>
+      <AuthField
+        required
+        autoComplete='off'
+        fullWidth
+        id="password"
+        name="password"
         label="Password"
-        name='password'
-        />
-        </FormControl>
-      <Button style={{height: '40px', color: "#2dcf2d", border: '1px solid #2dcf2d'}} variant="outlined" type="submit">Login</Button>
-    </Box>
+        placeholder='Jacob123'
+        value={formik.values.password}
+        onChange={formik.handleChange}
+        error={formik.touched.password && Boolean(formik.errors.password)}
+        helperText={formik.touched.password && formik.errors.password} />
+      <AuthButton fullWidth type='submit'>Login</AuthButton>
+  </AuthForm>
   );
 };
